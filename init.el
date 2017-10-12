@@ -418,3 +418,4 @@
   :init (add-to-list 'company-backends #'company-tern))
 ;;;END: Javascript Development
 
+;;; init.el ends here
