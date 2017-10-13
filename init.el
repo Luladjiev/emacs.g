@@ -196,6 +196,14 @@
   (general-define-key :keymaps '(normal emacs motion)
                       "TAB" #'evil-jump-item)
 
+  (general-define-key :keymaps '(insert emacs)
+                      "<C-SPC>" #'company-complete-common)
+
+  (general-define-key :keymaps 'company-active-map
+                      "C-j" #'company-select-next
+                      "C-k" #'company-select-previous
+                      "C-SPC" #'company-complete-common)
+
   (general-define-key "zx" #'kill-buffer)
 
   ;; Leader keybindings
@@ -237,13 +245,6 @@
 ;;;END: Keyboard Shortcuts
 
 (use-package company
-  :general
-  (:keymaps '(insert emacs)
-            "<C-SPC>" #'company-complete-common)
-  (:keymaps 'company-active-map
-            "C-j" #'company-select-next
-            "C-k" #'company-select-previous
-            "C-SPC" #'company-complete-common)
   :init
   (setq company-idle-delay 0)
   :config
