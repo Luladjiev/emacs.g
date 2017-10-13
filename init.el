@@ -334,8 +334,6 @@
   :config
   (ivy-mode t))
 
-(use-package smex)
-
 (use-package shackle
   :config
   (setq shackle-default-rule '(:select t))

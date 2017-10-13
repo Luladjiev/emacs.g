@@ -109,9 +109,6 @@
 [submodule "shackle"]
 	path = lib/shackle
 	url = git@github.com:wasamasa/shackle.git
-[submodule "smex"]
-	path = lib/smex
-	url = git@github.com:nonsequitur/smex.git
 [submodule "spaceline"]
 	path = lib/spaceline
 	url = git@github.com:TheBB/spaceline.git
