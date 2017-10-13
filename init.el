@@ -168,31 +168,6 @@
   (let ((projectile-require-project-root))
     (ignore-errors (projectile-project-root))))
 
-(use-package company
-  :init
-  (setq company-idle-delay 0)
-  :config
-  (add-hook 'prog-mode-hook #'company-mode))
-
-(defun leet-init-flycheck-eslint ()
-  "Favor local eslint over global."
-  (when (derived-mode-p 'js-mode)
-      (when-let ((exec-path (list (concat (leet-project-root) "node_modules/.bin")))
-                 (eslint (executable-find "eslint")))
-        (setq-local flycheck-javascript-eslint-executable eslint))))
-
-(use-package flycheck
-  :defer t
-  :init
-  (add-hook 'flycheck-mode-hook #'leet-init-flycheck-eslint)
-  (add-hook 'prog-mode-hook #'flycheck-mode))
-
-(use-package undo-tree
-  :config
-  ;; persistent undo history is known to cause undo history corruption, which
-  ;; can be very destructive! So disable it!
-  (setq undo-tree-auto-save-history nil))
-
 ;;;BEGIN: evil
 (use-package evil
   :config
@@ -210,11 +185,98 @@
 (use-package evil-anzu)
 ;;;END: evil
 
+;;;BEGIN: Keyboard Shortcuts
+(defvar leet-leader-key "SPC"
+  "Leet Evil leader key.")
+
+(use-package general
+  :config
+  (setq general-default-keymaps 'normal)
+
+  (general-define-key :keymaps '(normal emacs motion)
+                      "TAB" #'evil-jump-item)
+
+  (general-define-key "zx" #'kill-buffer)
+
+  ;; Leader keybindings
+  (general-define-key :prefix leet-leader-key
+                      "," #'(switch-to-buffer :which-key "Switch Buffer")
+                      "." #'(find-file :which-key "Find File"))
+
+  ;; File keybindings
+  (general-define-key :prefix (concat leet-leader-key " f")
+                      "" #'(nil :which-key "File"))
+
+  ;; Search keybindings
+  (general-define-key :prefix (concat leet-leader-key " s")
+                      "" #'(nil :which-key "Search")
+                      "c" #'(evil-ex-nohighlight :which-key "Clear Search"))
+
+  ;; Git keybindings
+  (general-define-key :prefix (concat leet-leader-key " g")
+                      "" #'(nil :which-key "Git"))
+
+  ;; Code keybindings
+  (general-define-key :prefix (concat leet-leader-key " c")
+                      "" #'(nil :which-key "Code"))
+
+  (general-define-key :prefix (concat leet-leader-key " c e")
+                      "" #'(nil :which-key "Errors"))
+
+  ;; Leet keybindings
+  (general-define-key :prefix (concat leet-leader-key " L")
+                      "" #'(nil :which-key "Leet"))
+
+  (general-define-key :prefix (concat leet-leader-key " L")
+                      "a" #'(borg-assimilate :which-key "Borg Assimilate")
+                      "d" #'(epkg-describe-package :which-key "Describe Package")))
+
+(use-package which-key
+  :config
+  (which-key-mode t))
+;;;END: Keyboard Shortcuts
+
+(use-package company
+  :general
+  (:keymaps '(insert emacs)
+            "<C-SPC>" #'company-complete-common)
+  (:keymaps 'company-active-map
+            "C-j" #'company-select-next
+            "C-k" #'company-select-previous
+            "C-SPC" #'company-complete-common)
+  :init
+  (setq company-idle-delay 0)
+  :config
+  (add-hook 'prog-mode-hook #'company-mode))
+
+(defun leet-init-flycheck-eslint ()
+  "Favor local eslint over global."
+  (when (derived-mode-p 'js-mode)
+    (when-let ((exec-path (list (concat (leet-project-root) "node_modules/.bin")))
+               (eslint (executable-find "eslint")))
+      (setq-local flycheck-javascript-eslint-executable eslint))))
+
+(use-package flycheck
+  :general
+  (:prefix (concat leet-leader-key " c e")
+           "l" #'(flycheck-list-errors :which-key "List"))
+  ("] r" #'(flycheck-next-error :which-key "Flycheck Next Error"))
+  ("[ r" #'(flycheck-previous-error :which-key "Flycheck Previous Error"))
+  :init
+  (add-hook 'flycheck-mode-hook #'leet-init-flycheck-eslint)
+  (add-hook 'prog-mode-hook #'flycheck-mode))
+
+(use-package undo-tree
+  :config
+  ;; persistent undo history is known to cause undo history corruption, which
+  ;; can be very destructive! So disable it!
+  (setq undo-tree-auto-save-history nil))
+
 ;;;BEGIN: User Interface
 (use-package doom-themes
   :config
   (setq doom-themes-enable-bold t
-	doom-themes-enable-italic t)
+        doom-themes-enable-italic t)
   (doom-themes-visual-bell-config)
   (load-theme 'doom-one t))
 
@@ -222,7 +284,7 @@
   :config
   (require 'spaceline-config)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state
-	powerline-height 30)
+        powerline-height 30)
   (set-face-attribute 'spaceline-evil-emacs nil :background "#dfdfdf")
   (set-face-attribute 'spaceline-evil-insert nil :background "#99bb66")
   (set-face-attribute 'spaceline-evil-motion nil :background "#ae81ff")
@@ -253,6 +315,17 @@
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package ivy
+  :general
+  ("M-x" #'counsel-M-x)
+  (:prefix (concat leet-leader-key " f")
+           "r" #'(counsel-recentf :which-key "Recent Files"))
+  (:prefix (concat leet-leader-key " s")
+           "r" #'(counsel-rg :which-key "rg")
+           "a" #'(counsel-ag :which-key "ag")
+           "s" #'(swiper :which-key "Swiper"))
+  (:keymaps 'ivy-minibuffer-map
+            "C-j" #'ivy-next-line
+            "C-k" #'ivy-previous-line)
   :init
   ;; Windows fix for ag
   ;; Warning: ag does not work with ivy occur and wgrep under Windows, use ripgrep
@@ -268,98 +341,23 @@
   (shackle-mode t))
 ;;;END: User Interface
 
-;;;BEGIN: Keyboard Shortcuts
-(defvar leet-leader-key "SPC"
-  "Leet Evil leader key.")
-
-(use-package general
-  :config
-  (setq general-default-keymaps 'normal)
-
-  (general-define-key :keymaps '(normal emacs motion)
-                      "TAB" #'evil-jump-item)
-
-  (general-define-key "zx" #'kill-buffer)
-
-  (general-define-key "M-x" #'counsel-M-x)
-
-  (general-define-key :keymaps '(insert emacs)
-  		      "<C-SPC>" #'company-complete-common)
-
-  (general-define-key :keymaps 'company-active-map
-		      "C-j" #'company-select-next
-		      "C-k" #'company-select-previous
-		      "C-SPC" #'company-complete-common)
-
-  (general-define-key :keymaps 'ivy-minibuffer-map
-		      "C-j" #'ivy-next-line
-		      "C-k" #'ivy-previous-line)
-
-  ;; Leader keybindings
-  (general-define-key :prefix leet-leader-key
-		      "SPC" #'(projectile-find-file :which-key "Find Project File")
-		      "," #'(switch-to-buffer :which-key "Switch Buffer")
-		      "." #'(find-file :which-key "Find File")
-		      "TAB" #'(projectile-project-buffers-other-buffer :which-key "Project Other Buffer")
-		      "p" #'(projectile-command-map :which-key "Projectile"))
-
-  ;; File keybindings
-  (general-define-key :prefix (concat leet-leader-key " f")
-                      "" #'(nil :which-key "File")
-                      "r" #'(counsel-recentf :which-key "Recent Files")
-                      "R" #'(projectile-recentf :which-key "Recent Project Files"))
-
-  ;; Search keybindings
-  (general-define-key :prefix (concat leet-leader-key " s")
-		      "" #'(nil :which-key "Search")
-		      "r" #'(counsel-rg :which-key "rg")
-		      "a" #'(counsel-ag :which-key "ag")
-		      "c" #'(evil-ex-nohighlight :which-key "Clear Search Highlight")
-		      "s" #'(swiper :which-key "Swiper"))
-
-  ;; Git keybindings
-  (general-define-key :prefix (concat leet-leader-key " g")
-		      "" #'(nil :which-key "Git")
-		      "b" #'(magit-blame :which-key "Blame")
-		      "s" #'(magit-status :which-key "Status"))
-
-  (general-define-key :keymaps '(magit-blame-mode-map)
-  		      "n" #'magit-blame-next-chunk
-  		      "p" #'magit-blame-previous-chunk
-  		      "q" #'magit-blame-quit)
-
-  ;; Code keybindings
-  (general-define-key :prefix (concat leet-leader-key " c")
-		      "" #'(nil :which-key "Code"))
-
-  (general-define-key :prefix (concat leet-leader-key " c e")
-		      "" #'(nil :which-key "Errors")
-		      "l" #'(flycheck-list-errors :which-key "List")
-		      "n" #'(flycheck-next-error :which-key "Next")
-		      "p" #'(flycheck-previous-error :which-key "Previous"))
-  ;; Leet keybindings
-  (general-define-key :prefix (concat leet-leader-key " L")
-                      "" #'(nil :which-key "Leet"))
-
-  (general-define-key :prefix (concat leet-leader-key " L")
-                      "a" #'(borg-assimilate :which-key "Borg Assimilate")
-                      "d" #'(epkg-describe-package :which-key "Describe Package")))
-
-(use-package which-key
-  :config
-  (which-key-mode t))
-;;;END: Keyboard Shortcuts
-
 ;;;BEGIN: Project Management
 (use-package projectile
+  :general
+  (:prefix leet-leader-key
+           "SPC" #'(projectile-find-file :which-key "Find Project File")
+           "TAB" #'(projectile-project-buffers-other-buffer :which-key "Project Other Buffer")
+           "p" #'(projectile-command-map :which-key "Projectile"))
+  (:prefix (concat leet-leader-key " f")
+           "R" #'(projectile-recentf :which-key "Recent Project Files"))
   :init
   (setq projectile-enable-caching (not noninteractive)
-	projectile-require-project-root nil)
+        projectile-require-project-root nil)
   :config
   (add-to-list 'projectile-globally-ignored-directories '"node_modules")
   (add-to-list 'projectile-globally-ignored-directories (expand-file-name "var" user-emacs-directory))
   (add-to-list 'projectile-globally-ignored-directories (expand-file-name "lib" user-emacs-directory))
-  (projectile-mode t))
+  (projectile-mode))
 
 (use-package counsel-projectile
   :config
@@ -374,7 +372,14 @@
 
 ;;;BEGIN: Git Integration
 (use-package magit
-  :defer t
+  :general
+  (:prefix (concat leet-leader-key " g")
+           "b" #'(magit-blame :which-key "Blame")
+           "s" #'(magit-status :which-key "Status"))
+  (:keymaps '(magit-blame-mode-map)
+            "n" #'magit-blame-next-chunk
+            "p" #'magit-blame-previous-chunk
+            "q" #'magit-blame-quit)
   :config
   (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (magit-add-section-hook 'magit-status-sections-hook
