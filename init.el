@@ -180,9 +180,11 @@
   :config
   (evil-escape-mode))
 
-(use-package evil-magit)
+(use-package evil-magit
+  :after magit)
 
-(use-package evil-anzu)
+(use-package evil-anzu
+  :after anzu)
 ;;;END: evil
 
 ;;;BEGIN: Keyboard Shortcuts
