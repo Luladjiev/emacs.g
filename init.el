@@ -2,6 +2,13 @@
 ;;; Commentary:
 
 ;;; Code:
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (progn ;     startup
   (defvar before-user-init-time (current-time)
     "Value of `current-time' when Emacs begins loading `user-init-file'.")
@@ -357,6 +364,7 @@
 (use-package magit
   :defer t
   :config
+  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-modules-unpulled-from-upstream
                           'magit-insert-unpulled-from-upstream)
