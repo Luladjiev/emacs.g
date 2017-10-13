@@ -407,6 +407,10 @@
                           'magit-insert-unpulled-from-upstream))
 
 (use-package git-gutter-fringe
+  :demand t
+  :general
+  ("] c" #'(git-gutter:next-hunk :which-key "Next Hunk"))
+  ("[ c" #'(git-gutter:previous-hunk :which-key "Previous Hunk"))
   :config
   ;; places the git gutter outside the margins.
   (setq-default fringes-outside-margins t)
