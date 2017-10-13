@@ -276,6 +276,9 @@
   :config
   (setq general-default-keymaps 'normal)
 
+  (general-define-key :keymaps '(normal emacs motion)
+                      "TAB" #'evil-jump-item)
+
   (general-define-key "zx" #'kill-buffer)
 
   (general-define-key "M-x" #'counsel-M-x)
