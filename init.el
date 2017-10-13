@@ -211,6 +211,10 @@
                       "," #'(switch-to-buffer :which-key "Switch Buffer")
                       "." #'(find-file :which-key "Find File"))
 
+  ;; Applications Keybindings
+  (general-define-key :prefix (concat leet-leader-key " a")
+                      "" #'(nil :which-key "Applications"))
+
   ;; File keybindings
   (general-define-key :prefix (concat leet-leader-key " f")
                       "" #'(nil :which-key "File"))
@@ -237,6 +241,7 @@
 
   (general-define-key :prefix (concat leet-leader-key " L")
                       "a" #'(borg-assimilate :which-key "Borg Assimilate")
+                      "r" #'(borg-remove :which-key "Borg Remove")
                       "d" #'(epkg-describe-package :which-key "Describe Package")))
 
 (use-package which-key
@@ -268,6 +273,9 @@
   (add-hook 'prog-mode-hook #'flycheck-mode))
 
 (use-package undo-tree
+  :general
+  (:prefix (concat leet-leader-key " a")
+           "u" #'(undo-tree-visualize :which-key "Undo Tree"))
   :config
   ;; persistent undo history is known to cause undo history corruption, which
   ;; can be very destructive! So disable it!
