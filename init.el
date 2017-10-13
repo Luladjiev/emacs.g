@@ -261,6 +261,11 @@
   (ivy-mode t))
 
 (use-package smex)
+
+(use-package shackle
+  :config
+  (setq shackle-default-rule '(:select t))
+  (shackle-mode t))
 ;;;END: User Interface
 
 ;;;BEGIN: Keyboard Shortcuts
@@ -415,7 +420,7 @@
   :config
   (setq js-switch-indent-offset 2)
   (setq js2-basic-offset 2)
-	(setq js2-indent-switch-body t))
+  (setq js2-indent-switch-body t))
 
 (use-package js2-refactor
   :defer t
