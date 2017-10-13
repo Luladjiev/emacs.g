@@ -373,10 +373,9 @@
   (add-hook 'projectile-mode-hook (counsel-projectile-on)))
 
 (use-package wgrep
-  :defer t
+  :after ivy-occur
   :config
-  (setq wgrep-auto-save-buffer t)
-  (add-hook 'ivy-occur-mode-hook (require 'wgrep)))
+  (setq wgrep-auto-save-buffer t))
 ;;;END: Project Management
 
 ;;;BEGIN: Git Integration
