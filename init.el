@@ -415,15 +415,6 @@
 (use-package js2-refactor
   :defer t
   :init (add-hook 'js2-mode-hook #'js2-refactor-mode))
-
-(use-package tern
-  :load-path "lib/tern/emacs"
-  :commands tern-mode
-  :init (add-hook 'js2-mode-hook #'tern-mode))
-
-(use-package company-tern
-  :defer t
-  :init (add-to-list 'company-backends #'company-tern))
 ;;;END: Javascript Development
 
 ;;; init.el ends here
