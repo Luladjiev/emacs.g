@@ -159,6 +159,10 @@
   ;; Delete trailing whitespace
   (add-hook 'before-save-hook 'delete-trailing-whitespace))
 
+(progn ;     Code
+  (setq-default indent-tabs-mode nil)
+  (setq-default tab-width 2))
+
 (defun leet-project-root ()
   "Get the path to the root of your project."
   (let ((projectile-require-project-root))
@@ -409,8 +413,9 @@
   :mode "\\.js$"
   :interpreter "node"
   :config
-  (setq js-switch-indent-offset 2
-	js2-indent-switch-body t))
+  (setq js-switch-indent-offset 2)
+  (setq js2-basic-offset 2)
+	(setq js2-indent-switch-body t))
 
 (use-package js2-refactor
   :defer t
