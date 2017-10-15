@@ -130,6 +130,7 @@
 
 (progn ;     UI
   (set-face-attribute 'default nil :font "Source Code Pro-14")
+  (toggle-frame-maximized)
   (scroll-bar-mode 0)
   (tool-bar-mode 0)
   (menu-bar-mode 0))
