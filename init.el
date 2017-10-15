@@ -110,14 +110,17 @@
   (add-to-list 'recentf-exclude "^/\\(?:ssh\\|su\\|sudo\\)?:")
   (setq recentf-max-menu-items 0
         recentf-max-saved-items 300
-        recentf-filename-handlers '(abbreviate-file-name))
+        recentf-filename-handlers '(abbreviate-file-name)
+        recentf-save-file (expand-file-name "var/recentf" user-emacs-directory))
   (recentf-mode))
 
 (use-package savehist
   :config (savehist-mode))
 
 (use-package saveplace
-  :config (save-place-mode))
+  :config
+  (setq save-place-file (expand-file-name "var/places" user-emacs-directory))
+  (save-place-mode))
 
 (use-package simple
   :config (column-number-mode))
@@ -364,6 +367,8 @@
   (setq projectile-enable-caching (not noninteractive)
         projectile-require-project-root nil)
   :config
+  (setq projectile-cache-file (expand-file-name "var/projectile.cache" user-emacs-directory)
+        projectile-known-projects-file (expand-file-name "var/projectile-known-projects.eld" user-emacs-directory))
   (add-to-list 'projectile-globally-ignored-directories '"node_modules")
   (add-to-list 'projectile-globally-ignored-directories (expand-file-name "var" user-emacs-directory))
   (add-to-list 'projectile-globally-ignored-directories (expand-file-name "lib" user-emacs-directory))
