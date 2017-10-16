@@ -2,3 +2,4 @@
 /.hive-maint
 /custom.el
 /var
+/init.elc
