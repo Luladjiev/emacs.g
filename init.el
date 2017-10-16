@@ -284,6 +284,8 @@
            "l" #'(flycheck-list-errors :which-key "List"))
   ("] r" #'(flycheck-next-error :which-key "Flycheck Next Error"))
   ("[ r" #'(flycheck-previous-error :which-key "Flycheck Previous Error"))
+  :config
+  (setq flycheck-check-syntax-automatically #'(mode-enabled save))
   :init
   (add-hook 'flycheck-mode-hook #'leet-init-flycheck-eslint)
   (add-hook 'prog-mode-hook #'flycheck-mode))
