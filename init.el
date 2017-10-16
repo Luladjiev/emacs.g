@@ -226,6 +226,11 @@
   (general-define-key :prefix (concat leet-leader-key " a")
                       "" #'(nil :which-key "Applications"))
 
+  ;; Buffer Keybindings
+  (general-define-key :prefix (concat leet-leader-key " b")
+                      "" #'(nil :which-key "Buffers")
+                      "b" #'(ibuffer :which-key "List Buffers"))
+
   ;; File keybindings
   (general-define-key :prefix (concat leet-leader-key " f")
                       "" #'(nil :which-key "File"))
