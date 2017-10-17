@@ -407,7 +407,6 @@
             "p" #'magit-blame-previous-chunk
             "q" #'magit-blame-quit)
   :config
-  (setq magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1)
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-modules-unpulled-from-upstream
                           'magit-insert-unpulled-from-upstream)
