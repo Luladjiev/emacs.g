@@ -390,6 +390,13 @@
   :config
   (add-hook 'projectile-mode-hook (counsel-projectile-on)))
 
+(use-package rg
+  :general
+  (:prefix (concat leet-leader-key " s")
+           "p" #'(rg-project :which-key "Project"))
+  :init
+  (add-hook 'rg-mode-hook 'wgrep-ag-setup))
+
 (use-package wgrep
   :after ivy-occur
   :config
