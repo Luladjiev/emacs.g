@@ -311,6 +311,7 @@
   :config
   (require 'spaceline-config)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state
+        powerline-default-separator 'bar
         powerline-height 30)
   (set-face-attribute 'spaceline-evil-emacs nil :background "#dfdfdf")
   (set-face-attribute 'spaceline-evil-insert nil :background "#99bb66")
