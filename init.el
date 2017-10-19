@@ -257,6 +257,7 @@
 
   (general-define-key :prefix (concat leet-leader-key " L")
                       "a" #'(borg-assimilate :which-key "Borg Assimilate")
+                      "c" #'(borg-clone :which-key "Borg Clone")
                       "r" #'(borg-remove :which-key "Borg Remove")
                       "d" #'(epkg-describe-package :which-key "Describe Package")))
 
