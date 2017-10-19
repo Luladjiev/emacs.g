@@ -299,6 +299,10 @@
   ;; can be very destructive! So disable it!
   (setq undo-tree-auto-save-history nil))
 
+(use-package avy
+  :general
+  ("S-SPC" #'(avy-goto-char)))
+
 ;;;BEGIN: User Interface
 (use-package doom-themes
   :config
