@@ -353,8 +353,7 @@
   (:prefix (concat leet-leader-key " f")
            "r" #'(counsel-recentf :which-key "Recent Files"))
   (:prefix (concat leet-leader-key " s")
-           "r" #'(counsel-rg :which-key "rg")
-           "a" #'(counsel-ag :which-key "ag")
+           "a" #'(counsel-ag :which-key "The Silver Searcher")
            "s" #'(swiper :which-key "Swiper"))
   (:keymaps 'ivy-minibuffer-map
             "C-j" #'ivy-next-line
@@ -399,7 +398,14 @@
 (use-package rg
   :general
   (:prefix (concat leet-leader-key " s")
-           "p" #'(rg-project :which-key "Project"))
+           "r" #'(nil :which-key "Ripgrep"))
+  (:prefix (concat leet-leader-key " s r")
+           "r" #'(rg :which-key "Directory")
+           "d" #'(rg-dwim :which-key "DWIM")
+           "l" #'(rg-literal :which-key "Literal")
+           "p" #'(rg-project :which-key "Project")
+           "s" #'(rg-list-searches :which-key "List Saved Searches")
+           "c" #'(counsel-rg :which-key "Counsel"))
   :init
   (add-hook 'rg-mode-hook 'wgrep-ag-setup))
 
