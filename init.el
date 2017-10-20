@@ -258,8 +258,27 @@
   (general-define-key :prefix (concat leet-leader-key " L")
                       "a" #'(borg-assimilate :which-key "Borg Assimilate")
                       "c" #'(borg-clone :which-key "Borg Clone")
-                      "r" #'(borg-remove :which-key "Borg Remove")
-                      "d" #'(epkg-describe-package :which-key "Describe Package")))
+                      "r" #'(borg-remove :which-key "Borg Remove"))
+
+  ;; Window Keybindings
+  (general-define-key "C-h" #'(evil-window-left)
+                      "C-j" #'(evil-window-down)
+                      "C-k" #'(evil-window-up)
+                      "C-l" #'(evil-window-right))
+
+  ;; Help keybindings
+  (general-define-key :prefix (concat leet-leader-key " h")
+                      "" #'(nil :which-key "Help"))
+
+  (general-define-key :prefix (concat leet-leader-key " h")
+                      "v" #'(counsel-describe-variable :which-key "Describe Variable")
+                      "k" #'(describe-key :which-key "Describe Key")
+                      "f" #'(counsel-describe-function :which-key "Describe Function")
+                      "F" #'(counsel-describe-face :which-key "Describe Face")
+                      "m" #'(describe-mode :which-key "Describe Mode")
+                      "M" #'(describe-minor-mode :which-key "Describe Minor Mode")
+                      "a" #'(counsel-apropos :which-key "Apropos")
+                      "p" #'(epkg-describe-package :which-key "Describe Package")))
 
 (use-package which-key
   :config
