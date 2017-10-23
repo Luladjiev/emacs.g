@@ -536,13 +536,12 @@
 (use-package js2-refactor
   :defer t
   :general
-  (general-evil-define-key 'normal 'js2-mode-map
+  (:keymaps '(js2-mode-map) :states '(normal)
     :prefix leet-local-leader-key
     "r" #'(nil :which-key "Refactor")
     "r k" #'(js2r-kill :which-key "Kill")
     "r r" #'(js2r-rename-var :which-key "Rename")
-    "r l" #'(js2r-log-this :which-key "Log This")
-    )
+    "r l" #'(js2r-log-this :which-key "Log This"))
   :init (add-hook 'js2-mode-hook #'js2-refactor-mode))
 ;;;END: Javascript Development
 
