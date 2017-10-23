@@ -435,6 +435,29 @@
   :after ivy-occur
   :config
   (setq wgrep-auto-save-buffer t))
+
+(use-package neotree
+  :config
+  :general
+  (:prefix (concat leet-leader-key " a")
+           "n" #'(nil :which-key "Neotree"))
+  (:prefix (concat leet-leader-key " a n")
+           "n" #'(neotree-toggle :which-key "Toggle")
+           "p" #'(neotree-projectile-action :which-key "Project")
+           "d" #'(neotree-dir :which-key "Directory"))
+  (:keymaps '(neotree-mode-map) :states '(normal)
+            "q" #'neotree-hide
+            "I" #'neotree-hidden-file-toggle
+            "z" #'neotree-stretch-toggle
+            "R" #'neotree-refresh
+            "m" #'neotree-rename-node
+            "c" #'neotree-create-node
+            "d" #'neotree-delete-node
+
+            "s" #'neotree-enter-vertical-split
+            "S" #'neotree-enter-horizontal-split
+
+            "RET" #'neotree-enter))
 ;;;END: Project Management
 
 ;;;BEGIN: Git Integration

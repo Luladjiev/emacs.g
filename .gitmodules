@@ -97,6 +97,9 @@
 [submodule "multiple-cursors"]
 	path = lib/multiple-cursors
 	url = git@github.com:magnars/multiple-cursors.el.git
+[submodule "neotree"]
+	path = lib/neotree
+	url = git@github.com:jaypei/emacs-neotree.git
 [submodule "nlinum"]
 	path = lib/nlinum
 	url = git@github.com:emacsmirror/nlinum.git
