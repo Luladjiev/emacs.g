@@ -199,6 +199,8 @@
 ;;;BEGIN: Keyboard Shortcuts
 (defvar leet-leader-key "SPC"
   "Leet Evil leader key.")
+(defvar leet-local-leader-key "m"
+  "Leet Evil local leader key.")
 
 (use-package general
   :config
