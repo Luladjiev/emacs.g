@@ -261,10 +261,11 @@
                       "r" #'(borg-remove :which-key "Borg Remove"))
 
   ;; Window Keybindings
-  (general-define-key "C-h" #'(evil-window-left)
-                      "C-j" #'(evil-window-down)
-                      "C-k" #'(evil-window-up)
-                      "C-l" #'(evil-window-right))
+  (evil-define-key 'normal (current-global-map)
+    (kbd "C-h") #'evil-window-left
+    (kbd "C-j") #'evil-window-down
+    (kbd "C-k") #'evil-window-up
+    (kbd "C-l") #'evil-window-right)
 
   ;; Help keybindings
   (general-define-key :prefix (concat leet-leader-key " h")
