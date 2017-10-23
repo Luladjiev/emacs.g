@@ -480,6 +480,16 @@
     "XXX....."
     "XXXX....")
   (add-hook 'after-init-hook #'global-git-gutter-mode))
+
+(use-package git-link
+  :general
+  (:prefix (concat leet-leader-key " g")
+           "l" #'(nil :which-key "Link")
+           "l l" #'(git-link :which-key "Line")
+           "l c" #'(git-link-commit :which-key "Commit")
+           "l h" #'(git-link-homepage :which-key "Homepage"))
+  :config
+  (setq git-link-open-in-browser t))
 ;;;END: Git Integration
 
 ;;;BEGIN: Javascript Development

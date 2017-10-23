@@ -72,6 +72,9 @@
 [submodule "git-gutter-fringe"]
 	path = lib/git-gutter-fringe
 	url = git@github.com:syohex/emacs-git-gutter-fringe.git
+[submodule "git-link"]
+	path = lib/git-link
+	url = git@github.com:sshaw/git-link.git
 [submodule "git-modes"]
 	path = lib/git-modes
 	url = git@github.com:magit/git-modes.git
@@ -84,6 +87,9 @@
 [submodule "js2-refactor"]
 	path = lib/js2-refactor
 	url = git@github.com:magnars/js2-refactor.el.git
+[submodule "lib/avy"]
+	path = lib/avy
+	url = git@github.com:abo-abo/avy.git
 [submodule "magit"]
 	path = lib/magit
 	url = git@github.com:magit/magit.git
@@ -148,6 +154,3 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = git@github.com:joaotavora/yasnippet.git
-[submodule "lib/avy"]
-	path = lib/avy
-	url = git@github.com:abo-abo/avy.git
