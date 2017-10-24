@@ -437,7 +437,6 @@
   (setq wgrep-auto-save-buffer t))
 
 (use-package neotree
-  :config
   :general
   (:prefix (concat leet-leader-key " a")
            "n" #'(nil :which-key "Neotree"))
