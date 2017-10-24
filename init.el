@@ -516,6 +516,24 @@
            "l h" #'(git-link-homepage :which-key "Homepage"))
   :config
   (setq git-link-open-in-browser t))
+
+(use-package git-timemachine
+  :general
+  (:prefix (concat leet-leader-key " g")
+           "t" #'(git-timemachine-toggle :which-key "Timemachine"))
+  (:keymaps '(git-timemachine-mode-map)
+            "q" #'git-timemachine-quit
+            "p" #'git-timemachine-show-previous-revision
+            "n" #'git-timemachine-show-next-revision
+            "g" #'git-timemachine-show-nth-revision
+            "w" #'git-timemachine-kill-abbreviated-revision
+            "W" #'git-timemachine-kill-revision
+            "b" #'git-timemachine-blame)
+  :config
+  ;; https://github.com/emacs-evil/evil/issues/511
+  (evil-make-overriding-map git-timemachine-mode-map 'normal)
+  ;; force update evil keymaps after git-timemachine-mode loaded
+  (add-hook 'git-timemachine-mode-hook #'evil-normalize-keymaps))
 ;;;END: Git Integration
 
 ;;;BEGIN: Javascript Development
