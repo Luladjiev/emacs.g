@@ -362,7 +362,6 @@
 
 (use-package anzu
   :config
-  (setq anzu-cons-mode-line-p nil)
   (set-face-attribute 'anzu-mode-line nil :foreground "#51afef")
   (set-face-attribute 'anzu-mode-line-no-match nil :foreground "#bf5150")
   (global-anzu-mode))
