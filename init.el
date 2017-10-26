@@ -346,12 +346,15 @@
   (set-face-attribute 'spaceline-evil-normal nil :background "#51afef")
   (set-face-attribute 'spaceline-evil-replace nil :background "#da8548")
   (set-face-attribute 'spaceline-evil-visual nil :background "#c678dd")
-  (spaceline-toggle-minor-modes-off)
-  (spaceline-emacs-theme))
+  (spaceline-toggle-minor-modes-off))
 
-(use-package nlinum
+(use-package spaceline-all-the-icons
+  :after spaceline
   :config
-  (add-hook 'after-init-hook #'global-nlinum-mode))
+  (setq spaceline-all-the-icons-separator-type 'none
+        spaceline-all-the-icons-hide-long-buffer-path t)
+  (spaceline-all-the-icons--setup-anzu)
+  (spaceline-all-the-icons-theme))
 
 (use-package winum
   :config

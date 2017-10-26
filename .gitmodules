@@ -1,6 +1,9 @@
 [borg]
 	pushDefault = locutus
 	collective = emacsg
+[submodule "all-the-icons"]
+	path = lib/all-the-icons
+	url = git@github.com:domtronn/all-the-icons.el.git
 [submodule "anzu"]
 	path = lib/anzu
 	url = git@github.com:syohex/emacs-anzu.git
@@ -60,6 +63,9 @@
 [submodule "flycheck"]
 	path = lib/flycheck
 	url = git@github.com:flycheck/flycheck.git
+[submodule "font-lock+"]
+	path = lib/font-lock+
+	url = git@github.com:emacsmirror/font-lock-plus.git
 [submodule "fringe-helper"]
 	path = lib/fringe-helper
 	url = git@github.com:nschum/fringe-helper.el.git
@@ -97,6 +103,9 @@
 	path = lib/magit
 	url = git@github.com:magit/magit.git
 	info-path = Documentation
+[submodule "memoize"]
+	path = lib/memoize
+	url = git@github.com:skeeto/emacs-memoize.git
 [submodule "multiple-cursors"]
 	path = lib/multiple-cursors
 	url = git@github.com:magnars/multiple-cursors.el.git
@@ -133,6 +142,9 @@
 [submodule "spaceline"]
 	path = lib/spaceline
 	url = git@github.com:TheBB/spaceline.git
+[submodule "spaceline-all-the-icons"]
+	path = lib/spaceline-all-the-icons
+	url = git@github.com:domtronn/spaceline-all-the-icons.el.git
 [submodule "tern"]
 	path = lib/tern
 	url = git@github.com:ternjs/tern.git
