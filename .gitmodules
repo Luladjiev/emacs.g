@@ -163,9 +163,6 @@
 [submodule "which-key"]
 	path = lib/which-key
 	url = git@github.com:justbur/emacs-which-key.git
-[submodule "winum"]
-	path = lib/winum
-	url = git@github.com:deb0ch/emacs-winum.git
 [submodule "with-editor"]
 	path = lib/with-editor
 	url = git@github.com:magit/with-editor.git

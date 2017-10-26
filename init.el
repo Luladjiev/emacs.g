@@ -356,10 +356,9 @@
   (spaceline-all-the-icons--setup-anzu)
   (spaceline-all-the-icons-theme))
 
-(use-package winum
+(use-package nlinum
   :config
-  (setq winum-auto-setup-mode-line nil)
-  (winum-mode))
+  (add-hook 'after-init-hook #'global-nlinum-mode))
 
 (use-package anzu
   :config
