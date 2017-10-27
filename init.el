@@ -276,6 +276,7 @@
   (general-define-key :prefix (concat leet-leader-key " h")
                       "v" #'(counsel-describe-variable :which-key "Describe Variable")
                       "k" #'(describe-key :which-key "Describe Key")
+                      "K" #'(general-describe-keybindings :which-key "Describe Keybindings")
                       "f" #'(counsel-describe-function :which-key "Describe Function")
                       "F" #'(counsel-describe-face :which-key "Describe Face")
                       "m" #'(describe-mode :which-key "Describe Mode")
