@@ -332,6 +332,7 @@
   :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
+  (set-face-attribute 'doom-modeline-error nil :height 150)
   (doom-themes-visual-bell-config)
   (load-theme 'doom-one t))
 
@@ -354,6 +355,7 @@
   :config
   (setq spaceline-all-the-icons-separator-type 'none
         spaceline-all-the-icons-hide-long-buffer-path t)
+  (set-face-attribute 'mode-line nil :height 150)
   (spaceline-all-the-icons--setup-anzu)
   (spaceline-all-the-icons-theme))
 
@@ -363,7 +365,7 @@
 
 (use-package anzu
   :config
-  (set-face-attribute 'anzu-mode-line nil :foreground "#51afef")
+  (set-face-attribute 'anzu-mode-line nil :height 160 :foreground "#51afef")
   (set-face-attribute 'anzu-mode-line-no-match nil :foreground "#bf5150")
   (global-anzu-mode))
 
