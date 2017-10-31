@@ -172,10 +172,19 @@
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2))
 
+;;;BEGIN: custom functions
 (defun leet-project-root ()
   "Get the path to the root of your project."
   (let ((projectile-require-project-root))
     (ignore-errors (projectile-project-root))))
+
+(defun leet-new-buffer ()
+  "Create new buffer and set it as current."
+  (interactive)
+  (let ((buffer (generate-new-buffer "*untitled*")))
+    (when buffer
+      (display-buffer buffer '(display-buffer-same-window)))))
+;;;END: custom functions
 
 ;;;BEGIN: evil
 (use-package evil
@@ -231,7 +240,8 @@
   ;; Buffer Keybindings
   (general-define-key :prefix (concat leet-leader-key " b")
                       "" #'(nil :which-key "Buffers")
-                      "b" #'(ibuffer :which-key "List Buffers"))
+                      "b" #'(ibuffer :which-key "List")
+                      "n" #'(leet-new-buffer :which-key "New"))
 
   ;; File keybindings
   (general-define-key :prefix (concat leet-leader-key " f")
