@@ -226,7 +226,8 @@
                       "C-k" #'company-select-previous
                       "C-SPC" #'company-complete-common)
 
-  (general-define-key "zx" #'kill-buffer)
+  (general-define-key "zx" #'kill-this-buffer)
+  (general-define-key "zX" #'kill-buffer-and-window)
 
   ;; Leader keybindings
   (general-define-key :prefix leet-leader-key
