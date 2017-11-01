@@ -203,6 +203,11 @@
 
 (use-package evil-anzu
   :after anzu)
+
+(use-package evil-matchit
+  :after evil
+  :config
+  (global-evil-matchit-mode t))
 ;;;END: evil
 
 ;;;BEGIN: Keyboard Shortcuts
@@ -216,7 +221,7 @@
   (setq general-default-keymaps 'normal)
 
   (general-define-key :keymaps '(normal emacs motion)
-                      "TAB" #'evil-jump-item)
+                      "TAB" #'evilmi-jump-items)
 
   (general-define-key :keymaps '(insert emacs)
                       "<C-SPC>" #'company-complete-common)
