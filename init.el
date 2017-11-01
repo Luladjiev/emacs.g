@@ -348,9 +348,9 @@
   :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
-  (set-face-attribute 'doom-modeline-error nil :height 150)
   (doom-themes-visual-bell-config)
-  (load-theme 'doom-one t))
+  (load-theme 'doom-one t)
+  (set-face-attribute 'doom-modeline-error nil :height 150))
 
 (use-package spaceline
   :config
