@@ -368,6 +368,8 @@
         spaceline-all-the-icons-hide-long-buffer-path t)
   (set-face-attribute 'mode-line nil :height 150)
   (spaceline-all-the-icons--setup-anzu)
+  (spaceline-toggle-all-the-icons-time-off)
+  (spaceline-toggle-all-the-icons-buffer-path-off)
   (spaceline-all-the-icons-theme))
 
 (use-package nlinum
