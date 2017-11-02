@@ -350,7 +350,8 @@
         doom-themes-enable-italic t)
   (doom-themes-visual-bell-config)
   (load-theme 'doom-one t)
-  (set-face-attribute 'doom-modeline-error nil :height 150))
+  ;; (set-face-attribute 'doom-modeline-error nil :height 150)
+  )
 
 (use-package spaceline
   :config
@@ -364,18 +365,8 @@
   (set-face-attribute 'spaceline-evil-normal nil :background "#51afef")
   (set-face-attribute 'spaceline-evil-replace nil :background "#da8548")
   (set-face-attribute 'spaceline-evil-visual nil :background "#c678dd")
-  (spaceline-toggle-minor-modes-off))
-
-(use-package spaceline-all-the-icons
-  :after spaceline
-  :config
-  (setq spaceline-all-the-icons-separator-type 'none
-        spaceline-all-the-icons-hide-long-buffer-path t)
-  (set-face-attribute 'mode-line nil :height 150)
-  (spaceline-all-the-icons--setup-anzu)
-  (spaceline-toggle-all-the-icons-time-off)
-  (spaceline-toggle-all-the-icons-buffer-path-off)
-  (spaceline-all-the-icons-theme))
+  (spaceline-toggle-minor-modes-off)
+  (spaceline-emacs-theme))
 
 (use-package nlinum
   :config
