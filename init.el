@@ -189,7 +189,7 @@
 ;;;BEGIN: evil
 (use-package evil
   :config
-  ;; (evil-select-search-module 'evil-search-module 'evil-search) ;; emacs hangs on searching in html files
+  (evil-select-search-module 'evil-search-module 'evil-search)
   (evil-mode t))
 
 (use-package evil-escape
