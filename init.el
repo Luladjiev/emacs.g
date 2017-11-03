@@ -477,6 +477,11 @@
 (use-package magit
   :general
   (:prefix (concat leet-leader-key " g")
+           "f" #'(nil :which-key "File")
+           "f h" #'(magit-log-buffer-file :which-key "History")
+           "f H" #'(magit-log-buffer-file-popup :which-key "History Popup")
+           "f d" #'(magit-diff-buffer-file :which-key "Diff")
+           "f D" #'(magit-diff-buffer-file-popup :which-key "Diff Popup")
            "b" #'(magit-blame :which-key "Blame")
            "s" #'(magit-status :which-key "Status"))
   (:keymaps '(magit-blame-mode-map)
