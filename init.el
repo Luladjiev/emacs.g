@@ -306,10 +306,11 @@
 ;;;END: Keyboard Shortcuts
 
 (use-package company
-  :init
-  (setq company-idle-delay 0)
   :config
-  (add-hook 'prog-mode-hook #'company-mode))
+  (setq company-dabbrev-downcase nil)
+  (add-hook 'prog-mode-hook #'company-mode)
+  :init
+  (setq company-idle-delay 0))
 
 (defun leet-init-flycheck-eslint ()
   "Favor local eslint over global."
