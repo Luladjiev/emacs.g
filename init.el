@@ -570,7 +570,8 @@
   :config
   (setq js-switch-indent-offset 2)
   (setq js2-basic-offset 2)
-  (setq js2-indent-switch-body t))
+  (setq js2-indent-switch-body t)
+  :init (add-hook 'js2-mode-hook #'hs-minor-mode))
 
 (use-package js2-refactor
   :defer t
