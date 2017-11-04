@@ -59,7 +59,9 @@
     (load custom-file)))
 
 (use-package server
-  :config (or (server-running-p) (server-mode)))
+  :config
+  (setq server-auth-dir (expand-file-name "var/server" user-emacs-directory))
+  (or (server-running-p) (server-mode)))
 
 (progn ;     startup
   (message "Loading initial packages...done (%.3fs)"
@@ -111,7 +113,9 @@
   (recentf-mode))
 
 (use-package savehist
-  :config (savehist-mode))
+  :config
+  (setq savehist-file (expand-file-name "var/history" user-emacs-directory))
+  (savehist-mode))
 
 (use-package saveplace
   :config
