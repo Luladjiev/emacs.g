@@ -395,17 +395,17 @@
   (:keymaps 'ivy-minibuffer-map
             "C-j" #'ivy-next-line
             "C-k" #'ivy-previous-line)
+  :config
+  (add-hook 'after-init-hook #'ivy-mode)
   :init
   ;; Windows fix for ag
   ;; Warning: ag does not work with ivy occur and wgrep under Windows, use ripgrep
-  (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s")
-  :config
-  (ivy-mode t))
+  (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s"))
 
 (use-package shackle
   :config
   (setq shackle-default-rule '(:select t))
-  (shackle-mode t))
+  (add-hook 'after-init-hook #'shackle-mode ))
 ;;;END: User Interface
 
 ;;;BEGIN: Project Management
