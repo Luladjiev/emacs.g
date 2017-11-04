@@ -402,6 +402,10 @@
   ;; Warning: ag does not work with ivy occur and wgrep under Windows, use ripgrep
   (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s"))
 
+(use-package smex
+  :config
+  (setq smex-save-file (expand-file-name "var/smex-items" user-emacs-directory)))
+
 (use-package shackle
   :config
   (setq shackle-default-rule '(:select t))
