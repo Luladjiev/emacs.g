@@ -134,7 +134,8 @@
 (ad-activate 'quit-window)
 
 (progn ;     General
-  (defalias 'yes-or-no-p 'y-or-n-p))
+  (defalias 'yes-or-no-p 'y-or-n-p)
+  (setq ring-bell-function 'ignore))
 
 (progn ;     UI
   (set-face-attribute 'default nil :font "Source Code Pro-16")
@@ -349,10 +350,7 @@
   :config
   (setq doom-themes-enable-bold t
         doom-themes-enable-italic t)
-  (doom-themes-visual-bell-config)
-  (load-theme 'doom-one t)
-  ;; (set-face-attribute 'doom-modeline-error nil :height 150)
-  )
+  (load-theme 'doom-one t))
 
 (use-package spaceline
   :config
