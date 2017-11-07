@@ -363,11 +363,11 @@
   (set-face-attribute 'spaceline-evil-emacs nil :background "#dfdfdf")
   (set-face-attribute 'spaceline-evil-insert nil :background "#99bb66")
   (set-face-attribute 'spaceline-evil-motion nil :background "#ae81ff")
-  (set-face-attribute 'spaceline-evil-normal nil :background "#51afef")
+  ;; (set-face-attribute 'spaceline-evil-normal nil :background "#51afef")
   (set-face-attribute 'spaceline-evil-replace nil :background "#da8548")
   (set-face-attribute 'spaceline-evil-visual nil :background "#c678dd")
   (spaceline-toggle-minor-modes-off)
-  (spaceline-emacs-theme))
+  (spaceline-spacemacs-theme))
 
 (use-package nlinum
   :config
