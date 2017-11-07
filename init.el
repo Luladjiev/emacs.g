@@ -173,12 +173,12 @@
   (setq-default tab-width 2))
 
 ;;;BEGIN: custom functions
-(defun leet-project-root ()
+(defun leet/project-root ()
   "Get the path to the root of your project."
   (let ((projectile-require-project-root))
     (ignore-errors (projectile-project-root))))
 
-(defun leet-new-buffer ()
+(defun leet/new-buffer ()
   "Create new buffer and set it as current."
   (interactive)
   (let ((buffer (generate-new-buffer "*untitled*")))
@@ -247,7 +247,7 @@
   (general-define-key :prefix (concat leet-leader-key " b")
                       "" #'(nil :which-key "Buffers")
                       "b" #'(ibuffer :which-key "List")
-                      "n" #'(leet-new-buffer :which-key "New"))
+                      "n" #'(leet/new-buffer :which-key "New"))
 
   ;; File keybindings
   (general-define-key :prefix (concat leet-leader-key " f")
@@ -312,10 +312,10 @@
   :init
   (setq company-idle-delay 0))
 
-(defun leet-init-flycheck-eslint ()
+(defun leet/init-flycheck-eslint ()
   "Favor local eslint over global."
   (when (derived-mode-p 'js-mode)
-    (when-let ((exec-path (list (concat (leet-project-root) "node_modules/.bin")))
+    (when-let ((exec-path (list (concat (leet/project-root) "node_modules/.bin")))
                (eslint (executable-find "eslint")))
       (setq-local flycheck-javascript-eslint-executable eslint))))
 
@@ -328,7 +328,7 @@
   :config
   (setq flycheck-check-syntax-automatically #'(mode-enabled save))
   :init
-  (add-hook 'flycheck-mode-hook #'leet-init-flycheck-eslint)
+  (add-hook 'flycheck-mode-hook #'leet/init-flycheck-eslint)
   (add-hook 'prog-mode-hook #'flycheck-mode))
 
 (use-package undo-tree
