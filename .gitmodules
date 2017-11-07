@@ -84,6 +84,9 @@
 [submodule "git-timemachine"]
 	path = lib/git-timemachine
 	url = git@github.com:pidu/git-timemachine.git
+[submodule "highlight-parentheses"]
+	path = lib/highlight-parentheses
+	url = git@github.com:tsdh/highlight-parentheses.el.git
 [submodule "ivy"]
 	path = lib/ivy
 	url = git@github.com:abo-abo/swiper.git
@@ -154,12 +157,12 @@
 [submodule "which-key"]
 	path = lib/which-key
 	url = git@github.com:justbur/emacs-which-key.git
+[submodule "winum"]
+	path = lib/winum
+	url = git@github.com:deb0ch/emacs-winum.git
 [submodule "with-editor"]
 	path = lib/with-editor
 	url = git@github.com:magit/with-editor.git
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = git@github.com:joaotavora/yasnippet.git
-[submodule "highlight-parentheses"]
-	path = lib/highlight-parentheses
-	url = git@github.com:tsdh/highlight-parentheses.el.git

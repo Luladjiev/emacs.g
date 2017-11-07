@@ -367,6 +367,21 @@
   (spaceline-toggle-minor-modes-off)
   (spaceline-spacemacs-theme))
 
+(use-package winum
+  :config
+  (general-define-key :prefix "C-w"
+           "1" #'(winum-select-window-1 :which-key "Select Window 1")
+           "2" #'(winum-select-window-2 :which-key "Select Window 2")
+           "3" #'(winum-select-window-3 :which-key "Select Window 3")
+           "4" #'(winum-select-window-4 :which-key "Select Window 4")
+           "5" #'(winum-select-window-5 :which-key "Select Window 5")
+           "6" #'(winum-select-window-6 :which-key "Select Window 6")
+           "7" #'(winum-select-window-7 :which-key "Select Window 7")
+           "8" #'(winum-select-window-8 :which-key "Select Window 8")
+           "9" #'(winum-select-window-9 :which-key "Select Window 9"))
+  (setq winum-auto-setup-mode-line nil)
+  (add-hook 'after-init-hook #'winum-mode))
+
 (use-package nlinum
   :config
   (add-hook 'after-init-hook #'global-nlinum-mode))
