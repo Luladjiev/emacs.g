@@ -386,9 +386,11 @@
 
 (use-package ivy
   :general
-  ("M-x" #'counsel-M-x)
+  (:prefix leet-leader-key
+           "SPC" #'(counsel-M-x :which-key "M-x"))
   (:prefix (concat leet-leader-key " f")
-           "r" #'(counsel-recentf :which-key "Recent Files"))
+           "r" #'(counsel-recentf :which-key "Recent Files")
+           "f" #'(counsel-find-file :which-key "Find File"))
   (:prefix (concat leet-leader-key " s")
            "a" #'(counsel-ag :which-key "The Silver Searcher")
            "s" #'(swiper :which-key "Swiper"))
@@ -416,7 +418,6 @@
 (use-package projectile
   :general
   (:prefix leet-leader-key
-           "SPC" #'(projectile-find-file :which-key "Find Project File")
            "TAB" #'(projectile-project-buffers-other-buffer :which-key "Project Other Buffer")
            "p" #'(projectile-command-map :which-key "Projectile"))
   (:prefix (concat leet-leader-key " f")
