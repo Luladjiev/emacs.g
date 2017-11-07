@@ -219,7 +219,7 @@
 
 (use-package general
   :config
-  (setq general-default-keymaps 'normal)
+  (setq general-default-keymaps '(normal visual))
 
   (general-define-key :keymaps '(normal emacs motion)
                       "TAB" #'evilmi-jump-items)
