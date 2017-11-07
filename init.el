@@ -384,6 +384,17 @@
   :config
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
+(use-package highlight-parentheses
+  :config
+  (set-face-attribute 'hl-paren-face nil :weight 'ultra-bold)
+  (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
+  :init
+  (setq hl-paren-delay 0.2
+        hl-paren-colors '("Springgreen3"
+                          "IndianRed1"
+                          "IndianRed3"
+                          "IndianRed4")))
+
 (use-package ivy
   :general
   (:prefix leet-leader-key

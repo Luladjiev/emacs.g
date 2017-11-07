@@ -160,3 +160,6 @@
 [submodule "yasnippet"]
 	path = lib/yasnippet
 	url = git@github.com:joaotavora/yasnippet.git
+[submodule "highlight-parentheses"]
+	path = lib/highlight-parentheses
+	url = git@github.com:tsdh/highlight-parentheses.el.git
