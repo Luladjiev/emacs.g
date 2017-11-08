@@ -185,6 +185,11 @@
   (let ((buffer (generate-new-buffer "*untitled*")))
     (when buffer
       (display-buffer buffer '(display-buffer-same-window)))))
+
+(defun leet/find-init-file ()
+  "Find leet init.el file."
+  (interactive)
+  (find-file-existing (expand-file-name "init.el" user-emacs-directory)))
 ;;;END: custom functions
 
 ;;;BEGIN: evil
@@ -242,39 +247,39 @@
 
   ;; Applications Keybindings
   (general-define-key :prefix (concat leet-leader-key " a")
-                      "" #'(nil :which-key "Applications"))
+                      "" #'(nil :which-key "applications"))
 
   ;; Buffer Keybindings
   (general-define-key :prefix (concat leet-leader-key " b")
-                      "" #'(nil :which-key "Buffers")
+                      "" #'(nil :which-key "buffers")
                       "b" #'(ibuffer :which-key "List")
                       "n" #'(leet/new-buffer :which-key "New"))
 
   ;; File keybindings
   (general-define-key :prefix (concat leet-leader-key " f")
-                      "" #'(nil :which-key "File"))
+                      "" #'(nil :which-key "files")
+                      "e" #'(nil :which-key "emacs(leet)")
+                      "e d" #'(leet/find-init-file :which-key "Init File"))
 
   ;; Search keybindings
   (general-define-key :prefix (concat leet-leader-key " s")
-                      "" #'(nil :which-key "Search")
+                      "" #'(nil :which-key "search")
                       "c" #'(evil-ex-nohighlight :which-key "Clear Search"))
 
   ;; Git keybindings
   (general-define-key :prefix (concat leet-leader-key " g")
-                      "" #'(nil :which-key "Git"))
+                      "" #'(nil :which-key "git"))
 
   ;; Code keybindings
   (general-define-key :prefix (concat leet-leader-key " c")
-                      "" #'(nil :which-key "Code"))
+                      "" #'(nil :which-key "code"))
 
   (general-define-key :prefix (concat leet-leader-key " c e")
-                      "" #'(nil :which-key "Errors"))
+                      "" #'(nil :which-key "errors"))
 
   ;; Leet keybindings
   (general-define-key :prefix (concat leet-leader-key " L")
-                      "" #'(nil :which-key "Leet"))
-
-  (general-define-key :prefix (concat leet-leader-key " L")
+                      "" #'(nil :which-key "leet")
                       "a" #'(borg-assimilate :which-key "Borg Assimilate")
                       "c" #'(borg-clone :which-key "Borg Clone")
                       "r" #'(borg-remove :which-key "Borg Remove"))
@@ -288,7 +293,7 @@
 
   ;; Help keybindings
   (general-define-key :prefix (concat leet-leader-key " h")
-                      "" #'(nil :which-key "Help"))
+                      "" #'(nil :which-key "help"))
 
   (general-define-key :prefix (concat leet-leader-key " h")
                       "v" #'(counsel-describe-variable :which-key "Describe Variable")
@@ -443,7 +448,7 @@
   :general
   (:prefix leet-leader-key
            "TAB" #'(projectile-project-buffers-other-buffer :which-key "Project Other Buffer")
-           "p" #'(projectile-command-map :which-key "Projectile"))
+           "p" #'(projectile-command-map :which-key "projectile"))
   (:prefix (concat leet-leader-key " f")
            "R" #'(projectile-recentf :which-key "Recent Project Files"))
   :init
@@ -464,7 +469,7 @@
 (use-package rg
   :general
   (:prefix (concat leet-leader-key " s")
-           "r" #'(nil :which-key "Ripgrep"))
+           "r" #'(nil :which-key "ripgrep"))
   (:prefix (concat leet-leader-key " s r")
            "r" #'(rg :which-key "Directory")
            "d" #'(rg-dwim :which-key "DWIM")
@@ -483,7 +488,7 @@
 (use-package neotree
   :general
   (:prefix (concat leet-leader-key " a")
-           "n" #'(nil :which-key "Neotree"))
+           "n" #'(nil :which-key "neotree"))
   (:prefix (concat leet-leader-key " a n")
            "n" #'(neotree-toggle :which-key "Toggle")
            "p" #'(neotree-projectile-action :which-key "Project")
@@ -507,7 +512,7 @@
 (use-package magit
   :general
   (:prefix (concat leet-leader-key " g")
-           "f" #'(nil :which-key "File")
+           "f" #'(nil :which-key "file")
            "f h" #'(magit-log-buffer-file :which-key "History")
            "f H" #'(magit-log-buffer-file-popup :which-key "History Popup")
            "f d" #'(magit-diff-buffer-file :which-key "Diff")
@@ -560,7 +565,7 @@
 (use-package git-link
   :general
   (:prefix (concat leet-leader-key " g")
-           "l" #'(nil :which-key "Link")
+           "l" #'(nil :which-key "link")
            "l l" #'(git-link :which-key "Line")
            "l c" #'(git-link-commit :which-key "Commit")
            "l h" #'(git-link-homepage :which-key "Homepage"))
@@ -608,7 +613,7 @@
   :general
   (:keymaps '(js2-mode-map) :states '(normal)
     :prefix leet-local-leader-key
-    "r" #'(nil :which-key "Refactor")
+    "r" #'(nil :which-key "refactor")
     "r k" #'(js2r-kill :which-key "Kill")
     "r r" #'(js2r-rename-var :which-key "Rename")
     "r l" #'(js2r-log-this :which-key "Log This"))
