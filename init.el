@@ -597,12 +597,16 @@
   :config
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-attr-indent-offset 2)
   (setq css-indent-offset 2))
 
 (use-package js2-mode
   :mode "\\.js$"
   :interpreter "node"
   :config
+  (setq js-indent-level 2)
   (setq js-switch-indent-offset 2)
   (setq js2-basic-offset 2)
   (setq js2-indent-switch-body t)
