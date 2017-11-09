@@ -90,6 +90,9 @@
 [submodule "ivy"]
 	path = lib/ivy
 	url = git@github.com:abo-abo/swiper.git
+[submodule "js-doc"]
+	path = lib/js-doc
+	url = git@github.com:mooz/js-doc.git
 [submodule "js2-mode"]
 	path = lib/js2-mode
 	url = git@github.com:mooz/js2-mode.git

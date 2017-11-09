@@ -618,6 +618,14 @@
     "r r" #'(js2r-rename-var :which-key "Rename")
     "r l" #'(js2r-log-this :which-key "Log This"))
   :init (add-hook 'js2-mode-hook #'js2-refactor-mode))
+
+(use-package js-doc
+  :general
+  (:keymaps '(js2-mode-map) :states '(normal)
+            :prefix leet-local-leader-key
+            "d" #'(nil :which-key "js-doc")
+            "d f" #'(js-doc-insert-function-doc :which-key "Function")
+            "d t" #'(js-doc-insert-tag :which-key "Tag")))
 ;;;END: Javascript Development
 
 ;;; init.el ends here
