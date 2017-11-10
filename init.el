@@ -543,11 +543,14 @@
   (add-hook 'git-commit-mode-hook 'evil-insert-state))
 
 (use-package git-gutter-fringe
-  :demand t
-  :general
-  ("] c" #'(git-gutter:next-hunk :which-key "Next Hunk"))
-  ("[ c" #'(git-gutter:previous-hunk :which-key "Previous Hunk"))
   :config
+  (general-define-key "] c" #'(git-gutter:next-hunk :which-key "Next Hunk")
+                      "[ c" #'(git-gutter:previous-hunk :which-key "Previous Hunk"))
+  (general-define-key :prefix (concat leet-leader-key " g")
+                      "h" #'(nil :which-key "hunk")
+                      "h r" #'(git-gutter:revert-hunk :which-key "Revert")
+                      "h d" #'(git-gutter:popup-hunk :which-key "Diff")
+                      "h s" #'(git-gutter:stage-hunk :which-key "Stage"))
   ;; places the git gutter outside the margins.
   (setq-default fringes-outside-margins t)
   ;; thin fringe bitmaps
