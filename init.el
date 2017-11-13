@@ -348,7 +348,14 @@
 
 (use-package avy
   :general
-  ("S-SPC" #'avy-goto-char))
+  (:prefix (concat leet-leader-key " j")
+           "" #'(nil :which-key "jump")
+           "j" #'(avy-goto-char :which-key "Char")
+           "s" #'(avy-goto-char-2 :which-key "Char 2")
+           "J" #'(avy-goto-char-timer :which-key "Char Timer")
+           "l" #'(avy-goto-line :which-key "Line"))
+  :config
+  (setq avy-timeout-seconds 0.2))
 
 ;;;BEGIN: User Interface
 (use-package doom-themes
