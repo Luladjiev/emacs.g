@@ -446,8 +446,11 @@
 
 (use-package shackle
   :config
-  (setq shackle-default-rule '(:select t))
-  (add-hook 'after-init-hook #'shackle-mode ))
+  (add-hook 'after-init-hook #'shackle-mode )
+  :init
+  (setq shackle-default-rule '(:select t)
+        shackle-rules
+        '(("*git-gutter:diff*" :same t))))
 ;;;END: User Interface
 
 ;;;BEGIN: Project Management
