@@ -186,6 +186,14 @@
     (when buffer
       (display-buffer buffer '(display-buffer-same-window)))))
 
+(defun leet/kill-other-buffers ()
+  "Kill all buffers except the current one."
+  (interactive)
+  (if (y-or-n-p "Kill other buffers? ")
+      (dolist (buffer (buffer-list))
+        (unless (eq buffer (current-buffer))
+          (kill-buffer buffer)))))
+
 (defun leet/find-init-file ()
   "Find leet init.el file."
   (interactive)
@@ -253,7 +261,8 @@
   (general-define-key :prefix (concat leet-leader-key " b")
                       "" #'(nil :which-key "buffers")
                       "b" #'(ibuffer :which-key "List")
-                      "n" #'(leet/new-buffer :which-key "New"))
+                      "n" #'(leet/new-buffer :which-key "New")
+                      "m" #'(leet/kill-other-buffers :which-key "Kill other buffers"))
 
   ;; File keybindings
   (general-define-key :prefix (concat leet-leader-key " f")
