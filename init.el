@@ -28,6 +28,7 @@
 (progn ;    create required folder
   (let ((dir (expand-file-name "var" user-emacs-directory)))
     (unless (file-directory-p dir)
+      (message "Creating var folder")
       (make-directory dir))))
 
 (progn ;    `borg'
