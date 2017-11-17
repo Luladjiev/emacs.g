@@ -213,9 +213,8 @@
   (evil-mode t))
 
 (use-package evil-escape
-  :init
-  (setq-default evil-escape-key-sequence "fd")
   :config
+  (setq-default evil-escape-key-sequence "fd")
   (evil-escape-mode))
 
 (use-package evil-magit
@@ -328,11 +327,11 @@
 
 (use-package company
   :config
-  (setq company-dabbrev-downcase nil)
-  (add-hook 'prog-mode-hook #'company-mode)
-  :init
-  (setq company-idle-delay 0))
+  (setq company-idle-delay 0
+        company-dabbrev-downcase nil)
+  (add-hook 'prog-mode-hook #'company-mode))
 
+(defvar flycheck-javascript-eslint-executable)
 (defun leet/init-flycheck-eslint ()
   "Favor local eslint over global."
   (when (derived-mode-p 'js-mode)
@@ -348,7 +347,6 @@
   ("[ r" #'(flycheck-previous-error :which-key "Flycheck Previous Error"))
   :config
   (setq flycheck-check-syntax-automatically #'(mode-enabled save))
-  :init
   (add-hook 'flycheck-mode-hook #'leet/init-flycheck-eslint)
   (add-hook 'prog-mode-hook #'flycheck-mode))
 
@@ -428,7 +426,6 @@
   :config
   (set-face-attribute 'hl-paren-face nil :weight 'ultra-bold)
   (add-hook 'prog-mode-hook #'highlight-parentheses-mode)
-  :init
   (setq hl-paren-delay 0.2
         hl-paren-colors '("Springgreen3"
                           "IndianRed1"
@@ -449,11 +446,10 @@
             "C-j" #'ivy-next-line
             "C-k" #'ivy-previous-line)
   :config
-  (add-hook 'after-init-hook #'ivy-mode)
-  :init
   ;; Windows fix for ag
   ;; Warning: ag does not work with ivy occur and wgrep under Windows, use ripgrep
-  (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s"))
+  (setq counsel-ag-base-command "ag --vimgrep --nocolor --nogroup %s")
+  (add-hook 'after-init-hook #'ivy-mode))
 
 (use-package smex
   :config
@@ -461,11 +457,10 @@
 
 (use-package shackle
   :config
-  (add-hook 'after-init-hook #'shackle-mode )
-  :init
   (setq shackle-default-rule '(:select t)
         shackle-rules
-        '(("*git-gutter:diff*" :same t))))
+        '(("*git-gutter:diff*" :same t)))
+  (add-hook 'after-init-hook #'shackle-mode))
 ;;;END: User Interface
 
 ;;;BEGIN: Project Management
@@ -502,7 +497,7 @@
            "p" #'(rg-project :which-key "Project")
            "s" #'(rg-list-searches :which-key "List Saved Searches")
            "c" #'(counsel-rg :which-key "Counsel"))
-  :init
+  :config
   (add-hook 'rg-mode-hook 'wgrep-ag-setup))
 
 (use-package wgrep
@@ -564,7 +559,6 @@
   (magit-add-section-hook 'magit-status-sections-hook
                           'magit-insert-submodules
                           'magit-insert-unpulled-from-upstream)
-  :init
   (add-hook 'git-commit-mode-hook 'evil-insert-state))
 
 (use-package git-gutter-fringe
@@ -638,7 +632,7 @@
   (setq js-switch-indent-offset 2)
   (setq js2-basic-offset 2)
   (setq js2-indent-switch-body t)
-  :init (add-hook 'js2-mode-hook #'hs-minor-mode))
+  (add-hook 'js2-mode-hook #'hs-minor-mode))
 
 (use-package js2-refactor
   :general
@@ -648,7 +642,7 @@
             "r k" #'(js2r-kill :which-key "Kill")
             "r r" #'(js2r-rename-var :which-key "Rename")
             "r l" #'(js2r-log-this :which-key "Log This"))
-  :init (add-hook 'js2-mode-hook #'js2-refactor-mode))
+  :config (add-hook 'js2-mode-hook #'js2-refactor-mode))
 
 (use-package js-doc
   :general
