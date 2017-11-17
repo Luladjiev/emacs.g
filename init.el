@@ -614,6 +614,13 @@
 ;;;END: Git Integration
 
 ;;;BEGIN: Javascript Development
+(defvar css-indent-offset)
+(defun leet/scss-set-indentation ()
+  "Set SASS files indentation."
+  (setq-local css-indent-offset 2))
+
+(add-hook 'scss-mode-hook #'leet/scss-set-indentation)
+
 (use-package web-mode
   :mode "\\.html$"
   :config
@@ -621,8 +628,7 @@
   (setq web-mode-css-indent-offset 2)
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-code-indent-offset 2)
-  (setq web-mode-attr-indent-offset 2)
-  (setq css-indent-offset 2))
+  (setq web-mode-attr-indent-offset 2))
 
 (use-package js2-mode
   :mode "\\.js$"
