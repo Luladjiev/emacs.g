@@ -25,6 +25,11 @@
   (tool-bar-mode 0)
   (menu-bar-mode 0))
 
+(progn ;    create required folder
+  (let ((dir (expand-file-name "var" user-emacs-directory)))
+    (unless (file-directory-p dir)
+      (make-directory dir))))
+
 (progn ;    `borg'
   (add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
   (require  'borg)
