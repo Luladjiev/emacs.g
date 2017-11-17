@@ -143,7 +143,7 @@
   (setq ring-bell-function 'ignore))
 
 (progn ;     UI
-  (set-face-attribute 'default nil :font "Roboto Mono-16")
+  (set-face-attribute 'default nil :font "Hack-16")
   (toggle-frame-maximized)
   (scroll-bar-mode 0)
   (tool-bar-mode 0)
