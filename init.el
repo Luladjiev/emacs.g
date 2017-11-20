@@ -627,7 +627,8 @@
 (use-package dumb-jump
   :general
   ("gd" #'dumb-jump-go
-   "gD" #'dumb-jump-go-other-window)
+   "gD" #'dumb-jump-go-other-window
+   "gb" #'dumb-jump-back)
   :config
   (setq dumb-jump-selector 'ivy
         dumb-jump-prefer-searcher 'rg))
