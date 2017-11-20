@@ -435,7 +435,8 @@
 (use-package ivy
   :general
   (:prefix leet-leader-key
-           "SPC" #'(counsel-M-x :which-key "M-x"))
+           "SPC" #'(counsel-M-x :which-key "M-x")
+           "y" #'(counsel-yank-pop :which-key "Yank"))
   (:prefix (concat leet-leader-key " f")
            "r" #'(counsel-recentf :which-key "Recent Files")
            "f" #'(counsel-find-file :which-key "Find File"))
