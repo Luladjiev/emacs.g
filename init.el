@@ -615,7 +615,7 @@
   (add-hook 'git-timemachine-mode-hook #'evil-normalize-keymaps))
 ;;;END: Git Integration
 
-;;;BEGIN: Text Editing
+;;;BEGIN: Code
 (use-package expand-region
   :general
   (:prefix leet-leader-key
@@ -623,7 +623,15 @@
   :config
   (setq expand-region-contract-fast-key "V"
         expand-region-reset-fast-key "r"))
-;;;END: Text Editing
+
+(use-package dumb-jump
+  :general
+  ("gd" #'dumb-jump-go
+   "gD" #'dumb-jump-go-other-window)
+  :config
+  (setq dumb-jump-selector 'ivy
+        dumb-jump-prefer-searcher 'rg))
+;;;END: Code
 
 ;;;BEGIN: Javascript Development
 (defvar css-indent-offset)

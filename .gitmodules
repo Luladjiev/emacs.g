@@ -35,6 +35,9 @@
 [submodule "doom-themes"]
 	path = lib/doom-themes
 	url = git@github.com:hlissner/emacs-doom-themes.git
+[submodule "dumb-jump"]
+	path = lib/dumb-jump
+	url = git@github.com:jacktasia/dumb-jump.git
 [submodule "emacsql"]
 	path = lib/emacsql
 	url = git@github.com:skeeto/emacsql.git
@@ -60,6 +63,9 @@
 [submodule "expand-region"]
 	path = lib/expand-region
 	url = git@github.com:magnars/expand-region.el.git
+[submodule "f"]
+	path = lib/f
+	url = git@github.com:rejeep/f.el.git
 [submodule "finalize"]
 	path = lib/finalize
 	url = git@github.com:skeeto/elisp-finalize.git
@@ -121,6 +127,9 @@
 [submodule "packed"]
 	path = lib/packed
 	url = git@github.com:emacscollective/packed.git
+[submodule "popup"]
+	path = lib/popup
+	url = git@github.com:auto-complete/popup-el.git
 [submodule "powerline"]
 	path = lib/powerline
 	url = git@github.com:milkypostman/powerline.git
