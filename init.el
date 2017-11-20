@@ -668,7 +668,7 @@
             "r k" #'(js2r-kill :which-key "Kill")
             "r r" #'(js2r-rename-var :which-key "Rename")
             "r l" #'(js2r-log-this :which-key "Log This"))
-  :config (add-hook 'js2-mode-hook #'js2-refactor-mode))
+  :init (add-hook 'js2-mode-hook #'js2-refactor-mode))
 
 (use-package js-doc
   :general
