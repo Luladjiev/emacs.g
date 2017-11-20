@@ -614,6 +614,16 @@
   (add-hook 'git-timemachine-mode-hook #'evil-normalize-keymaps))
 ;;;END: Git Integration
 
+;;;BEGIN: Text Editing
+(use-package expand-region
+  :general
+  (:prefix leet-leader-key
+           "v" #'(er/expand-region :which-key "Expand Region"))
+  :config
+  (setq expand-region-contract-fast-key "V"
+        expand-region-reset-fast-key "r"))
+;;;END: Text Editing
+
 ;;;BEGIN: Javascript Development
 (defvar css-indent-offset)
 (defun leet/scss-set-indentation ()

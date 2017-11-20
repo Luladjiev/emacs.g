@@ -57,6 +57,9 @@
 [submodule "evil-matchit"]
 	path = lib/evil-matchit
 	url = git@github.com:redguardtoo/evil-matchit.git
+[submodule "expand-region"]
+	path = lib/expand-region
+	url = git@github.com:magnars/expand-region.el.git
 [submodule "finalize"]
 	path = lib/finalize
 	url = git@github.com:skeeto/elisp-finalize.git
