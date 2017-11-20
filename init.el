@@ -459,7 +459,8 @@
   :config
   (setq shackle-default-rule '(:select t)
         shackle-rules
-        '(("*git-gutter:diff*" :same t)))
+        '(("*git-gutter:diff*" :same t)
+          ("*rg*" :select t)))
   (add-hook 'after-init-hook #'shackle-mode))
 ;;;END: User Interface
 
