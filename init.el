@@ -476,10 +476,10 @@
            "R" #'(projectile-recentf :which-key "Recent Project Files"))
   :init
   (setq projectile-enable-caching (not noninteractive)
-        projectile-require-project-root nil)
+        projectile-require-project-root nil
+        projectile-cache-file (expand-file-name "var/projectile.cache" user-emacs-directory)
+        projectile-known-projects-file (expand-file-name "var/projectile.projects" user-emacs-directory))
   :config
-  (setq projectile-cache-file (expand-file-name "var/projectile.cache" user-emacs-directory)
-        projectile-known-projects-file (expand-file-name "var/projectile-known-projects.eld" user-emacs-directory))
   (add-to-list 'projectile-globally-ignored-directories '"node_modules")
   (add-to-list 'projectile-globally-ignored-directories (expand-file-name "var" user-emacs-directory))
   (add-to-list 'projectile-globally-ignored-directories (expand-file-name "lib" user-emacs-directory))
