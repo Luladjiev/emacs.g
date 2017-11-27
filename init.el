@@ -5,6 +5,39 @@
 
 (package-initialize)
 
+;;;BEGIN: custom functions
+(defun leet/ensure-folder (folder)
+  "Ensure that a FOLDER exists."
+  (let ((dir (expand-file-name folder user-emacs-directory)))
+    (unless (file-directory-p dir)
+      (message (concat "Creating " dir " folder"))
+      (make-directory dir))))
+
+(defun leet/project-root ()
+  "Get the path to the root of your project."
+    (ignore-errors (projectile-project-root)))
+
+(defun leet/new-buffer ()
+  "Create new buffer and set it as current."
+  (interactive)
+  (let ((buffer (generate-new-buffer "*untitled*")))
+    (when buffer
+      (display-buffer buffer '(display-buffer-same-window)))))
+
+(defun leet/kill-other-buffers ()
+  "Kill all buffers except the current one."
+  (interactive)
+  (if (y-or-n-p "Kill other buffers? ")
+      (dolist (buffer (buffer-list))
+        (unless (eq buffer (current-buffer))
+          (kill-buffer buffer)))))
+
+(defun leet/find-init-file ()
+  "Find leet init.el file."
+  (interactive)
+  (find-file-existing (expand-file-name "init.el" user-emacs-directory)))
+;;;END: custom functions
+
 (progn ;     startup
   (defvar before-user-init-time (current-time)
     "Value of `current-time' when Emacs begins loading `user-init-file'.")
@@ -25,11 +58,9 @@
   (tool-bar-mode 0)
   (menu-bar-mode 0))
 
-(progn ;    create required folder
-  (let ((dir (expand-file-name "var" user-emacs-directory)))
-    (unless (file-directory-p dir)
-      (message "Creating var folder")
-      (make-directory dir))))
+(progn ;    create required folders
+  (leet/ensure-folder "var")
+  (leet/ensure-folder "var/epkgs"))
 
 (progn ;    `borg'
   (add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
@@ -178,33 +209,6 @@
 (progn ;     Code
   (setq-default indent-tabs-mode nil)
   (setq-default tab-width 2))
-
-;;;BEGIN: custom functions
-(defun leet/project-root ()
-  "Get the path to the root of your project."
-  (let ((projectile-require-project-root))
-    (ignore-errors (projectile-project-root))))
-
-(defun leet/new-buffer ()
-  "Create new buffer and set it as current."
-  (interactive)
-  (let ((buffer (generate-new-buffer "*untitled*")))
-    (when buffer
-      (display-buffer buffer '(display-buffer-same-window)))))
-
-(defun leet/kill-other-buffers ()
-  "Kill all buffers except the current one."
-  (interactive)
-  (if (y-or-n-p "Kill other buffers? ")
-      (dolist (buffer (buffer-list))
-        (unless (eq buffer (current-buffer))
-          (kill-buffer buffer)))))
-
-(defun leet/find-init-file ()
-  "Find leet init.el file."
-  (interactive)
-  (find-file-existing (expand-file-name "init.el" user-emacs-directory)))
-;;;END: custom functions
 
 ;;;BEGIN: evil
 (use-package evil
