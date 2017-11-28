@@ -552,20 +552,9 @@
             "q" #'magit-blame-quit)
   :config
   (magit-add-section-hook 'magit-status-sections-hook
-                          'magit-insert-modules-unpulled-from-upstream
-                          'magit-insert-unpulled-from-upstream)
-  (magit-add-section-hook 'magit-status-sections-hook
-                          'magit-insert-modules-unpulled-from-pushremote
-                          'magit-insert-unpulled-from-upstream)
-  (magit-add-section-hook 'magit-status-sections-hook
-                          'magit-insert-modules-unpushed-to-upstream
-                          'magit-insert-unpulled-from-upstream)
-  (magit-add-section-hook 'magit-status-sections-hook
-                          'magit-insert-modules-unpushed-to-pushremote
-                          'magit-insert-unpulled-from-upstream)
-  (magit-add-section-hook 'magit-status-sections-hook
-                          'magit-insert-submodules
-                          'magit-insert-unpulled-from-upstream)
+                          'magit-insert-modules
+                          'magit-insert-stashes
+                          'append)
   (add-hook 'git-commit-mode-hook 'evil-insert-state))
 
 (use-package git-gutter-fringe
