@@ -78,6 +78,9 @@
 [submodule "general"]
 	path = lib/general
 	url = git@github.com:noctuid/general.el.git
+[submodule "ghub"]
+	path = lib/ghub
+	url = git@github.com:magit/ghub.git
 [submodule "git-gutter"]
 	path = lib/git-gutter
 	url = git@github.com:syohex/emacs-git-gutter.git
