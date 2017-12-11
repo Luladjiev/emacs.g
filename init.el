@@ -388,10 +388,10 @@
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state
         powerline-default-separator 'bar
         powerline-height 30)
-  (set-face-attribute 'powerline-active1 nil :background "#51afef" :foreground "#282c34")
-  (set-face-attribute 'powerline-active2 nil :background "#23272e" :foreground "#282c34")
-  (set-face-attribute 'powerline-inactive1 nil :background "#202328")
-  (set-face-attribute 'powerline-inactive2 nil :background "#3f444a")
+  (set-face-attribute 'powerline-active1 nil :background "#282c34" :foreground "#bbc2cf")
+  (set-face-attribute 'powerline-active2 nil :background "#282c34" :foreground "#bbc2cf")
+  (set-face-attribute 'powerline-inactive1 nil :background "#21242b" :foreground "5b6268")
+  (set-face-attribute 'powerline-inactive2 nil :background "#21242b" :foreground "5b6268")
   (set-face-attribute 'spaceline-evil-emacs nil :background "#dfdfdf")
   (set-face-attribute 'spaceline-evil-insert nil :background "#99bb66")
   (set-face-attribute 'spaceline-evil-motion nil :background "#ae81ff")
