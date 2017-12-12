@@ -59,8 +59,7 @@
   (menu-bar-mode 0))
 
 (progn ;    create required folders
-  (leet/ensure-folder "var")
-  (leet/ensure-folder "var/epkgs"))
+  (leet/ensure-folder "var"))
 
 (progn ;    `borg'
   (add-to-list 'load-path (expand-file-name "lib/borg" user-emacs-directory))
